@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.robson.transportadora.entities.ununs.TrackingStatus;
 
 @Entity
@@ -77,7 +76,6 @@ public class Tracking implements Serializable {
 		}
 	}
 	
-	@JsonIgnore
 	public Order getOrder() {
 		return order;
 	}

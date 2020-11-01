@@ -3,6 +3,7 @@ package com.robson.transportadora.dto;
 import java.time.Instant;
 
 import com.robson.transportadora.entities.Tracking;
+import com.robson.transportadora.entities.ununs.TrackingStatus;
 
 public class TrackingDTO {
 
@@ -15,12 +16,12 @@ public class TrackingDTO {
 		
 	}
 
-	public TrackingDTO(Long id, String location, Instant moment, Integer status) {
+	public TrackingDTO(Long id, String location, Instant moment, TrackingStatus status) {
 		super();
 		this.id = id;
 		this.location = location;
 		this.moment = moment;
-		this.status = status;
+		setStatus(status);
 	}
 	
 	public TrackingDTO(Tracking entity) {
@@ -54,11 +55,13 @@ public class TrackingDTO {
 		this.moment = moment;
 	}
 
-	public Integer getStatus() {
-		return status;
+	public TrackingStatus getStatus() {
+		return TrackingStatus.valueOf(status);
 	}
 
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setStatus(TrackingStatus trackingStatus) {
+		if (trackingStatus != null) {
+			this.status = trackingStatus.getCode();			
+		}
 	}
 }
