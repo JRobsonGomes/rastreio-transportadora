@@ -7,7 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.robson.transportadora.entities.ununs.TrackingStatus;
 
 @Entity
 @Table(name = "tb_tracking")
@@ -17,21 +22,25 @@ public class Tracking implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String situation;
 	private String location;
 	private Instant moment;
-	
+	private Integer status;
+
+	@ManyToOne
+	@JoinColumn(name = "order_id")
+	private Order order;
 	
 	public Tracking() {
 		
 	}
 
-	public Tracking(Long id, String situation, String location, Instant moment) {
+	public Tracking(Long id, String location, Instant moment, TrackingStatus status, Order order) {
 		super();
 		this.id = id;
-		this.situation = situation;
 		this.location = location;
 		this.moment = moment;
+		this.order = order;
+		setStatus(status);
 	}
 
 	public Long getId() {
@@ -40,14 +49,6 @@ public class Tracking implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getSituation() {
-		return situation;
-	}
-
-	public void setSituation(String situation) {
-		this.situation = situation;
 	}
 
 	public String getLocation() {
@@ -64,6 +65,25 @@ public class Tracking implements Serializable {
 
 	public void setMoment(Instant moment) {
 		this.moment = moment;
+	}
+
+	public TrackingStatus getStatus() {
+		return TrackingStatus.valueOf(status);
+	}
+
+	public void setStatus(TrackingStatus trackingStatus) {
+		if (trackingStatus != null) {
+			this.status = trackingStatus.getCode();			
+		}
+	}
+	
+	@JsonIgnore
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	@Override
