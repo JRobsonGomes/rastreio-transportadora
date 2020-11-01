@@ -32,7 +32,7 @@ public class OrderDTO implements Serializable {
 	
 	public OrderDTO(Order entity, Set<Tracking> trackings) {
 		this(entity);
-		trackings.forEach(cat -> this.trackings.add(new  TrackingDTO(cat)));
+		trackings.forEach(tracking -> this.trackings.add(new  TrackingDTO(tracking)));
 	}
 
 	public Long getId() {

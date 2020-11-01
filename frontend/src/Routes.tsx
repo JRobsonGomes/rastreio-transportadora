@@ -1,5 +1,5 @@
 import Home from 'pages/Home';
-import Tracking from 'pages/Tracking';
+import OrderTracking from 'pages/OrderTracking';
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './core/components/NavBar';
@@ -11,8 +11,8 @@ const Routes = () => (
             <Route path="/" exact >
                 <Home />
             </Route>
-            <Route path="/tracking">
-                <Tracking />
+            <Route path="/orders/:orderId" exact>
+                <OrderTracking />
             </Route>
         </Switch>
     </BrowserRouter>

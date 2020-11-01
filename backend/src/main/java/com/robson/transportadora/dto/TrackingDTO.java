@@ -55,8 +55,8 @@ public class TrackingDTO {
 		this.moment = moment;
 	}
 
-	public TrackingStatus getStatus() {
-		return TrackingStatus.valueOf(status);
+	public String getStatus() {
+		return TrackingStatus.valueOf(status).getDescricao();
 	}
 
 	public void setStatus(TrackingStatus trackingStatus) {
