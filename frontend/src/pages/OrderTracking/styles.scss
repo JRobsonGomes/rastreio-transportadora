@@ -1,4 +1,9 @@
 .card-body-containt {
     display: flex;
     justify-content: flex-start;
+    gap: 20px;
+}
+
+.etiqueta {
+    font-weight: bold;
 }

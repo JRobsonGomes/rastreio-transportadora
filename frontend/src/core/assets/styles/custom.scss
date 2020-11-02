@@ -1,1 +1,29 @@
-@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/bootstrap.scss";
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+
+.btn-primary {
+    background: #e6b733;
+    border-color: transparent;
+    box-shadow: 0 0 0 0.2rem rgba(130,138,145,.5);
+
+    &:focus {
+        outline: 0;
+        inset: 0 0 100px rgba(0, 0, 0, 0.2);
+    }
+
+    &:hover {
+        background-color: #b79127;
+        border-color: #b79127;
+    }
+
+    &.active {
+        background-color: #b79127;
+        border-color: #b79127;
+    }
+}

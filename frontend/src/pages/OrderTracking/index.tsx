@@ -39,16 +39,26 @@ const OrderTracking = () => {
             </div>
             <div className="card-body">
                 <div className="card-header">
-                    <h3 className="card-title">Rastreamento (Status)</h3>
+                    <h3 className="card-title">Rastreamento</h3>
                 </div>
                 <div className="card-body-containt">
                     {order?.trackings.map(
                         tracking => (
-                            <div className={tracking.status === "Entre ao Destinatário"? "card text-white bg-success mb-3" : "card text-white bg-secondary mb-3"}>
-                                <div className="card-header">{tracking.status}</div>
+                            <div className={tracking.status === "Entre ao Destinatário" ? "card text-white bg-success mb-3" : "card text-white bg-secondary mb-3"}
+                                key={tracking.id}>
+                                <div className="card-header">
+                                    <span className="etiqueta">Status: </span>
+                                    {tracking.status}
+                                </div>
                                 <div className="card-body">
-                                    <h5 className="card-title">{tracking.location}</h5>
-                                    <p className="card-text">{formatDate(tracking.moment)}</p>
+                                    <p className="card-title">
+                                        <span className="etiqueta">Local: </span>
+                                        {tracking.location}
+                                    </p>
+                                    <p className="card-text">
+                                        <span className="etiqueta">Data/hora: </span>
+                                        {formatDate(tracking.moment)}
+                                    </p>
                                 </div>
                             </div>
                         )
