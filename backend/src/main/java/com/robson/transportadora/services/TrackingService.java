@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.robson.transportadora.dto.TrackingDTO;
 import com.robson.transportadora.entities.Tracking;
 import com.robson.transportadora.repositories.TrackingRepository;
+import com.robson.transportadora.services.exceptions.ResourceNotFoundException;
 
 
 @Service
@@ -28,7 +29,7 @@ public class TrackingService {
 	@Transactional(readOnly = true)
 	public TrackingDTO findById(Long id) {
 		Optional<Tracking> obj = repository.findById(id);
-		Tracking entity = obj.orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+		Tracking entity = obj.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 		return new TrackingDTO(entity);
 	}
 }

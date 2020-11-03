@@ -1,8 +1,9 @@
 package com.robson.transportadora.entities;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,12 +21,12 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String description;
-	
+
 	@OneToMany(mappedBy = "order")
-	private Set<Tracking> trackings = new HashSet<>();
-	
+	private List<Tracking> trackings = new ArrayList<>();
+
 	public Order() {
-		
+
 	}
 
 	public Order(Long id, String description) {
@@ -50,8 +51,9 @@ public class Order implements Serializable {
 		this.description = description;
 	}
 
-	public Set<Tracking> getTrackings() {
-		return trackings;
+	public List<Tracking> getTrackings() {
+		return trackings.stream().sorted((x, y) -> x.getMoment()
+				.compareTo(y.getMoment())).collect(Collectors.toList());
 	}
 
 	@Override

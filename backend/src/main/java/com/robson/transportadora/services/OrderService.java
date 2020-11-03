@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.robson.transportadora.dto.OrderDTO;
 import com.robson.transportadora.entities.Order;
 import com.robson.transportadora.repositories.OrderRepository;
+import com.robson.transportadora.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class OrderService {
@@ -27,7 +28,7 @@ public class OrderService {
 	@Transactional(readOnly = true)
 	public OrderDTO findById(Long id) {
 		Optional<Order> obj = repository.findById(id);
-		Order entity = obj.orElseThrow(() -> new RuntimeException("Recurso não encontrado"));
+		Order entity = obj.orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
 		return new OrderDTO(entity, entity.getTrackings());
 	}
 }

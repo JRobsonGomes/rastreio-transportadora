@@ -5,7 +5,7 @@ public enum TrackingStatus {
 	ENTIQUETA_CRIADA(1, "Etiqueta Criada"),
 	ENVIADO(2, "Enviado"),
 	TRANSPORTE(3, "Em Transporte"),
-	ENTREGUE(4, "Entre ao Destinatário");
+	ENTREGUE(4, "Entregue ao Destinatário");
 	
 	private int code;
 	private String descricao;

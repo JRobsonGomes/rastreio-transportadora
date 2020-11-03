@@ -44,7 +44,7 @@ const OrderTracking = () => {
                 <div className="card-body-containt">
                     {order?.trackings.map(
                         tracking => (
-                            <div className={tracking.status === "Entre ao Destinatário" ? "card text-white bg-success mb-3" : "card text-white bg-secondary mb-3"}
+                            <div className={tracking.status === "Entregue ao Destinatário" ? "card text-white bg-success mb-3" : "card text-white bg-secondary mb-3"}
                                 key={tracking.id}>
                                 <div className="card-header">
                                     <span className="etiqueta">Status: </span>

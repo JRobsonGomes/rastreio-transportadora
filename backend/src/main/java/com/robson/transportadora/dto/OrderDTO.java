@@ -3,7 +3,6 @@ package com.robson.transportadora.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.robson.transportadora.entities.Order;
 import com.robson.transportadora.entities.Tracking;
@@ -30,7 +29,7 @@ public class OrderDTO implements Serializable {
 		this.description = entity.getDescription();
 	}
 	
-	public OrderDTO(Order entity, Set<Tracking> trackings) {
+	public OrderDTO(Order entity, List<Tracking> trackings) {
 		this(entity);
 		trackings.forEach(tracking -> this.trackings.add(new  TrackingDTO(tracking)));
 	}
